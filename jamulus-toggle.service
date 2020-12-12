@@ -1,0 +1,22 @@
+[Unit]
+Description=Jamulus-Server-Recording-Toggle
+After=network.target
+Requires=jamulus.service
+PartOf=jamulus.service
+
+[Service]
+Type=simple
+User=jamulus
+NoNewPrivileges=true
+
+ExecStart=/usr/local/bin/jamulus-ui -listen-address 0.0.0.0:9095 -index-page /opt/jamulus-ui/index.html -toggle-threshold 1
+
+Restart=on-failure
+RestartSec=30
+StandardOutput=journal
+StandardError=inherit
+SyslogIdentifier=jamulus
+
+[Install]
+WantedBy=multi-user.target
+

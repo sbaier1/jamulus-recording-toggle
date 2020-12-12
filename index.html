@@ -1,0 +1,17 @@
+<html>
+    <h1>Jamulus Recording Controller</h1>
+    <input onclick="toggle()" type="button" value="Start/Stop" id="toggle"></input>
+    <p id="status">0 users are voting to toggle recording state, x required</p>
+
+    <script type="text/javascript">
+        fetch(window.location.href+"/status")
+                .then(res => res.text())
+                .then(res => document.getElementById("status").innerHTML = res)
+        function toggle()
+        {
+            fetch(window.location.href+"/toggle")
+                .then(res => res.text())
+                .then(res => document.getElementById("status").innerHTML = res)
+        }
+    </script>
+</html>
