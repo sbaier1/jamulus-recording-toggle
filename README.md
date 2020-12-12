@@ -5,6 +5,22 @@ Only works on Linux servers and must be run in a way such that the service can f
 
 Of course this is only a workaround for now, ultimately this should be built into Jamulus itself, for example by integrating with the Chat feature instead.
 
+Note that votes for changing the recording state are simply based on the request source IP, so a reverse proxy is not going to work for toggle threshold > 1.
+
+Usage:
+
+```bash
+Usage of /usr/local/bin/jamulus-ui:
+  -index-page string
+        The index page file to display at the root.
+  -listen-address string
+        The address the HTTP server should listen on.
+  -process-name string
+        Process name to scan for (default "Jamulus")
+  -toggle-threshold int
+        The number of votes necessary to toggle recording. (default 2)
+```
+
 ## Installing
 
 - Download and adjust the parameters of the [systemd unit](jamulus-toggle.service)
